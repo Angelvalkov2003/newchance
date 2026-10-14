@@ -75,7 +75,7 @@ export default function SportImageGrid({ heading, buttonLabel, buttonHref, heroI
 
         <div className="pointer-events-none absolute inset-0 z-40 flex flex-col items-center justify-center gap-8 px-6 text-center text-white">
           <h2 className="heading-xl grid w-full grid-cols-2 gap-x-[0.15em] xl:leading-[152px]" style={{ fontSize: "min(13vw, 180px)" }}>
-            <span className="pr-[0.35em] text-right">{heading[0]}</span>
+            <span className="pr-[0.15em] text-right">{heading[0]}</span>
             <span className="text-left">{heading[1]}</span>
           </h2>
           <a href={buttonHref} className="btn pointer-events-auto mt-4 xl:mt-10">
