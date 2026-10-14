@@ -1,9 +1,21 @@
 import Header from "./components/Header";
 import Services from "./components/Services";
 import SportImageGrid from "./components/SportImageGrid";
+import Link from "next/link";
+import Footer from "./components/Footer";
+import ContactCta from "./components/ContactCta";
+import ServiceCards from "./components/ServiceCards";
+import Image from "next/image";
+import { COMPANY, HOME_IMAGES, INTRO, TAGLINE } from "./data/site";
 
 const BASE = "https://www.sispitches.com";
 const UP = `${BASE}/wp-content/uploads`;
+
+// Секциите от шаблона (hero, услуги, лога, footer...) са скрити, не изтрити – true ги показва пак
+const SHOW_TEMPLATE = false;
+
+// TODO: мотото от клиента
+const MOTTO = "Your motto goes here";
 
 // TODO: заместващ текст – клиентът да подаде финалните текстове за всяка секция
 const COPY = "Placeholder text – replace with the final copy from the client.";
@@ -88,6 +100,9 @@ export default function Home() {
       <Header />
 
       <main>
+        {/* Hidden for now – template sections kept for later */}
+        {SHOW_TEMPLATE && (
+        <>
         {/* HERO */}
         <section className="relative h-screen overflow-hidden bg-midnight text-white">
           <video
@@ -126,15 +141,62 @@ export default function Home() {
           </div>
         </section>
 
-        {/* SPORTS GRID – pinned, images slide in on scroll */}
+        </>
+        )}
+        {/* HOME – pinned, images slide in on scroll */}
         <SportImageGrid
-          heading="A pitch for every purpose"
-          buttonLabel="Find Your Sport"
-          buttonHref={`${BASE}/sports/`}
-          heroImg={sports[0].img}
-          images={sports.slice(1).map((s) => ({ src: s.img, alt: s.title }))}
+          heading={MOTTO}
+          buttonLabel="Our Projects"
+          buttonHref="/projects"
+          heroImg={HOME_IMAGES.hero}
+          images={HOME_IMAGES.tiles}
         />
 
+        {/* ЗА НАС – кратко представяне */}
+        <section className="bg-white py-24">
+          <div className="mx-auto grid max-w-[1600px] gap-12 px-6 xl:grid-cols-12 xl:px-15">
+            <div className="xl:col-span-5">
+              <p className="mb-4 text-sm font-semibold uppercase tracking-wide text-sis-purple">{COMPANY}</p>
+              <h2 className="heading-lg text-sis-purple">{TAGLINE}</h2>
+            </div>
+            <div className="flex flex-col gap-5 text-lg text-neutral-700 xl:col-span-6 xl:col-start-7 xl:pt-10">
+              {INTRO.map((p) => (
+                <p key={p}>{p}</p>
+              ))}
+              <div className="pt-4">
+                <Link href="/services" className="btn">Всички услуги <Arrow /></Link>
+              </div>
+            </div>
+          </div>
+          <div className="mx-auto mt-16 max-w-[1600px] px-6 xl:px-15">
+            <div className="relative aspect-[4/3] overflow-hidden sm:aspect-[16/9]">
+              <Image
+                src={HOME_IMAGES.about.src}
+                alt="Спортни терени, строителство и жилищни обекти"
+                fill
+                sizes="(min-width: 1600px) 1480px, 100vw"
+                className="object-cover"
+              />
+            </div>
+          </div>
+        </section>
+
+        {/* УСЛУГИ */}
+        <section className="bg-neutral-100 py-24">
+          <div className="mx-auto max-w-[1600px] px-6 xl:px-15">
+            <div className="mb-12 flex flex-wrap items-end justify-between gap-6">
+              <h2 className="heading-lg text-sis-purple">Услуги</h2>
+              <Link href="/contact" className="btn">Контакти <Arrow /></Link>
+            </div>
+            <ServiceCards />
+          </div>
+        </section>
+
+        <ContactCta />
+
+        {/* Hidden for now – template sections kept for later */}
+        {SHOW_TEMPLATE && (
+        <>
         {/* LOGOS */}
         <section className="bg-neutral-100 py-24">
           <div className="mx-auto max-w-[1600px] px-6 xl:px-15">
@@ -216,8 +278,13 @@ export default function Home() {
             ))}
           </div>
         </section>
+        </>
+        )}
       </main>
 
+      <Footer />
+      {SHOW_TEMPLATE && (
+      <>
       {/* FOOTER */}
       <div className="h-6 bg-evergreen" />
       <footer className="bg-midnight pt-16 pb-10 text-white">
@@ -249,6 +316,8 @@ export default function Home() {
           <p className="mt-10 text-xs text-white/50">© {new Date().getFullYear()} SIS Pitches</p>
         </div>
       </footer>
+      </>
+      )}
     </>
   );
 }

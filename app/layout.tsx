@@ -4,19 +4,19 @@ import "./globals.css";
 
 const inter = Inter({
   variable: "--font-inter",
-  subsets: ["latin"],
+  subsets: ["latin", "cyrillic"],
 });
 
 // Condensed display font, stand-in for the licensed Typekit font on the current site
 const display = Oswald({
   variable: "--font-display",
-  subsets: ["latin"],
+  subsets: ["latin", "cyrillic"],
   weight: ["500", "600", "700"],
 });
 
 export const metadata: Metadata = {
-  title: "SIS Pitches | Natural, Hybrid & Synthetic Sports Surfaces",
-  description: "Natural, hybrid and synthetic sports surfaces.",
+  title: "New Chance 96",
+  description: "Спортни терени, строителство, ремонти и сделки с недвижими имоти",
 };
 
 export default function RootLayout({
@@ -25,7 +25,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${inter.variable} ${display.variable} antialiased`}>
+    <html lang="bg" className={`${inter.variable} ${display.variable} antialiased`}>
       <body>{children}</body>
     </html>
   );

@@ -1,18 +1,19 @@
 "use client";
 
+import Image from "next/image";
 import { useEffect, useRef } from "react";
 
 type Props = {
   heading: string;
   buttonLabel: string;
   buttonHref: string;
-  heroImg: string;
-  images: { src: string; alt: string }[];
+  heroImg: { src: string; pos?: string };
+  images: { src: string; alt: string; pos?: string }[];
 };
 
 /**
  * Секцията се "закача" (sticky) за екрана; докато скролваш, снимките
- * изплуват отдолу една по една – редуват се ляво/дясно (на мобилно са на цял екран).
+ * изплуват отдолу една по една – редуват се ляво/дясно (на мобилно – горе/долу, на половин екран).
  */
 export default function SportImageGrid({ heading, buttonLabel, buttonHref, heroImg, images }: Props) {
   const sectionRef = useRef<HTMLElement>(null);
@@ -32,7 +33,7 @@ export default function SportImageGrid({ heading, buttonLabel, buttonHref, heroI
       tileRefs.current.forEach((tile, i) => {
         if (!tile) return;
         const t = Math.min(Math.max(progress - i, 0), 1); // 0 = долу, 1 = на място
-        tile.style.transform = `translate3d(0, ${(1 - t) * 100}%, 0)`;
+        tile.style.transform = `translate3d(0, ${(1 - t) * 100}vh, 0)`;
       });
     };
 
@@ -53,7 +54,7 @@ export default function SportImageGrid({ heading, buttonLabel, buttonHref, heroI
   return (
     <section ref={sectionRef} className="relative" style={{ height: `${(images.length + 1) * 100}vh` }}>
       <div className="sticky top-0 h-screen overflow-hidden">
-        <img src={heroImg} alt="" className="absolute inset-0 h-full w-full object-cover" />
+        <Image src={heroImg.src} alt="" fill preload sizes="100vw" className="object-cover" style={{ objectPosition: heroImg.pos }} />
         <div className="absolute inset-0 bg-black/40" />
 
         {images.map((img, i) => (
@@ -62,12 +63,12 @@ export default function SportImageGrid({ heading, buttonLabel, buttonHref, heroI
             ref={(el) => {
               tileRefs.current[i] = el;
             }}
-            className={`absolute top-0 h-screen w-full overflow-hidden will-change-transform lg:w-1/2 ${
-              i % 2 === 0 ? "left-0" : "left-0 lg:left-1/2"
+            className={`absolute left-0 h-1/2 w-full overflow-hidden will-change-transform lg:top-0 lg:h-screen lg:w-1/2 ${
+              i % 2 === 0 ? "top-0" : "top-1/2 lg:left-1/2"
             }`}
-            style={{ transform: "translate3d(0, 100%, 0)", zIndex: 10 + i }}
+            style={{ transform: "translate3d(0, 100vh, 0)", zIndex: 10 + i }}
           >
-            <img src={img.src} alt={img.alt} className="absolute inset-0 h-full w-full object-cover" />
+            <Image src={img.src} alt={img.alt} fill loading="eager" sizes="(min-width: 1024px) 50vw, 100vw" className="object-cover" style={{ objectPosition: img.pos }} />
             <div className="absolute inset-0 bg-black/60" />
           </div>
         ))}
