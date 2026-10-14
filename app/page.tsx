@@ -13,9 +13,9 @@ const UP = `${BASE}/wp-content/uploads`;
 
 // Секциите от шаблона (hero, услуги, лога, footer...) са скрити, не изтрити – true ги показва пак
 const SHOW_TEMPLATE = false;
+const SHOW_SERVICES = false;
 
-// TODO: мотото от клиента
-const MOTTO = "Your motto goes here";
+const MOTTO: [string, string] = ["New", "Chance"];
 
 // TODO: заместващ текст – клиентът да подаде финалните текстове за всяка секция
 const COPY = "Placeholder text – replace with the final copy from the client.";
@@ -146,7 +146,7 @@ export default function Home() {
         {/* HOME – pinned, images slide in on scroll */}
         <SportImageGrid
           heading={MOTTO}
-          buttonLabel="Our Projects"
+          buttonLabel="Нашите проекти"
           buttonHref="/projects"
           heroImg={HOME_IMAGES.hero}
           images={HOME_IMAGES.tiles}
@@ -181,7 +181,8 @@ export default function Home() {
           </div>
         </section>
 
-        {/* УСЛУГИ */}
+        {/* УСЛУГИ – скрити от началната (има ги в менюто и в „Всички услуги“) */}
+        {SHOW_SERVICES && (
         <section className="bg-neutral-100 py-24">
           <div className="mx-auto max-w-[1600px] px-6 xl:px-15">
             <div className="mb-12 flex flex-wrap items-end justify-between gap-6">
@@ -191,6 +192,7 @@ export default function Home() {
             <ServiceCards />
           </div>
         </section>
+        )}
 
         <ContactCta />
 

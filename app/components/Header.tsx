@@ -35,7 +35,7 @@ export default function Header() {
       <div className={`transition-colors ${scrolled || open ? "bg-white shadow-sm" : "bg-white/95"}`}>
         <div className="mx-auto flex max-w-[1600px] items-center justify-between px-6 py-4 xl:px-15">
           <Link href="/" onClick={() => setOpen(false)} className="font-display text-2xl font-bold uppercase tracking-tight text-sis-purple">
-            {COMPANY.replace(/ \d+$/, "")} <span className="font-medium">{COMPANY.match(/\d+$/)?.[0]}</span>
+            {COMPANY}
           </Link>
 
           <nav className="hidden items-center gap-10 xl:flex">

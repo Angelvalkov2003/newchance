@@ -15,7 +15,7 @@ const display = Oswald({
 });
 
 export const metadata: Metadata = {
-  title: "New Chance 96",
+  title: "New Chance",
   description: "Спортни терени, строителство, ремонти и сделки с недвижими имоти",
 };
 
