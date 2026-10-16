@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { COMPANY, PHONES, SERVICES, TAGLINE } from "../data/site";
+import { COMPANY, EMAIL, PHONES, SERVICES, TAGLINE } from "../data/site";
 
 export default function Footer() {
   return (
@@ -32,6 +32,9 @@ export default function Footer() {
                     <a href={p.href} className="text-white/70 hover:text-evergreen">{p.label}</a>
                   </li>
                 ))}
+                <li>
+                  <a href={`mailto:${EMAIL}`} className="text-white/70 hover:text-evergreen">{EMAIL}</a>
+                </li>
               </ul>
             </div>
           </div>

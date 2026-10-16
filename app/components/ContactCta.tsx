@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { CONTACT_CTA, PHONES } from "../data/site";
+import { CONTACT_CTA, EMAIL, PHONES } from "../data/site";
 
 export default function ContactCta({ showLink = true }: { showLink?: boolean }) {
   return (
@@ -13,11 +13,23 @@ export default function ContactCta({ showLink = true }: { showLink?: boolean }) 
             <PhoneIcon /> {p.label}
           </a>
         ))}
+        <a href={`mailto:${EMAIL}`} className="btn">
+          <MailIcon /> {EMAIL}
+        </a>
         {showLink && (
           <Link href="/contact" className="btn btn--outline">Контакти</Link>
         )}
       </div>
     </section>
+  );
+}
+
+function MailIcon() {
+  return (
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden>
+      <rect x="2" y="4" width="20" height="16" rx="2" />
+      <path d="m22 6-10 7L2 6" />
+    </svg>
   );
 }
 

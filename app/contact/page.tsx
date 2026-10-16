@@ -1,6 +1,6 @@
 import Header from "../components/Header";
 import Footer from "../components/Footer";
-import { COMPANY, CONTACT_CTA, PHONES } from "../data/site";
+import { COMPANY, CONTACT_CTA, EMAIL, PHONES } from "../data/site";
 
 export const metadata = { title: `Контакти | ${COMPANY}` };
 
@@ -29,6 +29,17 @@ export default function Contact() {
                 </span>
               </a>
             ))}
+            <a href={`mailto:${EMAIL}`} className="group flex items-center justify-between gap-6 bg-midnight px-8 py-8 text-white transition-colors hover:bg-sis-purple">
+              <span className="min-w-0">
+                <span className="block text-sm uppercase tracking-wide text-white/60">Имейл</span>
+                <span className="heading-md mt-1 block break-all normal-case">{EMAIL}</span>
+              </span>
+              <span className="flex h-12 w-12 shrink-0 items-center justify-center bg-evergreen text-midnight">
+                <svg width="18" height="16" viewBox="0 0 11 10" fill="none" aria-hidden>
+                  <path stroke="currentColor" d="M0 5h9.5M6 1l4 4-4 4" />
+                </svg>
+              </span>
+            </a>
           </div>
         </div>
       </main>

@@ -14,6 +14,7 @@ const UP = `${BASE}/wp-content/uploads`;
 // Секциите от шаблона (hero, услуги, лога, footer...) са скрити, не изтрити – true ги показва пак
 const SHOW_TEMPLATE = false;
 const SHOW_SERVICES = false;
+const SHOW_ABOUT_IMAGE = false; // колажът вече е снимката в началото
 
 const MOTTO: [string, string] = ["New", "Chance"];
 
@@ -168,6 +169,7 @@ export default function Home() {
               </div>
             </div>
           </div>
+          {SHOW_ABOUT_IMAGE && (
           <div className="mx-auto mt-16 max-w-[1600px] px-6 xl:px-15">
             <div className="relative aspect-[4/3] overflow-hidden sm:aspect-[16/9]">
               <Image
@@ -179,6 +181,7 @@ export default function Home() {
               />
             </div>
           </div>
+          )}
         </section>
 
         {/* УСЛУГИ – скрити от началната (има ги в менюто и в „Всички услуги“) */}

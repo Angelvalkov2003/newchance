@@ -19,7 +19,7 @@ body {
 .heading-md {
   font-family: var(--font-display), sans-serif;
   text-transform: uppercase;
-  line-height: 0.9;
+  line-height: 1.05;
   font-weight: 600;
   letter-spacing: -0.01em;
 }
@@ -48,3 +48,23 @@ body {
 
 .no-scrollbar { scrollbar-width: none; }
 .no-scrollbar::-webkit-scrollbar { display: none; }
+
+/* Мобилно меню – плъзгане отдясно и поетапно появяване на елементите */
+.mobile-drawer {
+  transition: translate 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.mobile-drawer .drawer-item {
+  opacity: 0;
+  transform: translateX(2rem);
+  transition: opacity 0.25s ease, transform 0.25s ease;
+}
+.mobile-drawer.is-open .drawer-item {
+  opacity: 1;
+  transform: none;
+  transition: opacity 0.5s ease, transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+  transition-delay: calc(0.15s + var(--i, 0) * 0.06s);
+}
+@media (prefers-reduced-motion: reduce) {
+  .mobile-drawer,
+  .mobile-drawer .drawer-item { transition: none; }
+}

@@ -1,5 +1,7 @@
 export const COMPANY = "New Chance";
 
+export const EMAIL = "info@newchance.group";
+
 export const PHONES = [
   { label: "+359 88 824 4789", href: "tel:+359888244789" },
   { label: "+359 89 455 6204", href: "tel:+359894556204" },
@@ -23,11 +25,11 @@ export const CONTACT_CTA = {
 export type Img = { src: string; pos?: string };
 
 export const HOME_IMAGES = {
-  hero: { src: "/Picture_5.png" },
+  hero: { src: "/Picture_1.png" },
   tiles: [
     { src: "/snimka1_home_page.jpg", alt: "Тенис корт с клей настилка" },
     { src: "/snimka_2_home_page.jpg", alt: "Игрище за пикълбол", pos: "30% 50%" },
-    { src: "/snimka_4_home_page.jpg", alt: "Зала за минифутбол", pos: "45% 60%" },
+    { src: "/Picture_5.png", alt: "Футболен стадион" },
     { src: "/Picture_2.png", alt: "Баскетболна площадка" },
     { src: "/Picture_3.png", alt: "Тенис кортове", pos: "50% 70%" },
   ],
@@ -140,7 +142,7 @@ export const SERVICES: Service[] = [
     title: "Ремонти и довършване",
     short: "Цялостни и частични ремонти на жилища, офиси и търговски обекти.",
     intro: "Цялостни и частични ремонти на жилища, офиси, търговски и обслужващи помещения.",
-    img: { src: "/Picture_1.png", pos: "95% 85%" },
+    img: { src: "/remonti.png" },
     groups: [
       {
         items: [
@@ -163,7 +165,7 @@ export const SERVICES: Service[] = [
     title: "Хидро-, топло- и шумоизолации",
     short: "Изпълнение, ремонт и подмяна на изолационни системи.",
     intro: "Изпълнение, ремонт и подмяна на изолационни системи.",
-    img: { src: "/Picture_1.png", pos: "95% 20%" },
+    img: { src: "/hidroizolaciya.png" },
     groups: [
       {
         title: "Хидроизолации",
