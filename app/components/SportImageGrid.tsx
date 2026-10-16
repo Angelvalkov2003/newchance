@@ -33,7 +33,7 @@ export default function SportImageGrid({ heading, buttonLabel, buttonHref, heroI
       tileRefs.current.forEach((tile, i) => {
         if (!tile) return;
         const t = Math.min(Math.max(progress - i, 0), 1); // 0 = долу, 1 = на място
-        tile.style.transform = `translate3d(0, ${(1 - t) * 100}vh, 0)`;
+        tile.style.transform = `translate3d(0, ${(1 - t) * 100}svh, 0)`;
       });
     };
 
@@ -52,8 +52,8 @@ export default function SportImageGrid({ heading, buttonLabel, buttonHref, heroI
   }, [images.length]);
 
   return (
-    <section ref={sectionRef} className="relative" style={{ height: `${(images.length + 1) * 100}vh` }}>
-      <div className="sticky top-0 h-screen overflow-hidden">
+    <section ref={sectionRef} className="relative" style={{ height: `${(images.length + 1) * 100}svh` }}>
+      <div className="sticky top-0 h-svh overflow-hidden">
         <Image src={heroImg.src} alt="" fill preload sizes="100vw" className="object-cover" style={{ objectPosition: heroImg.pos }} />
         <div className="absolute inset-0 bg-black/40" />
 
@@ -63,10 +63,10 @@ export default function SportImageGrid({ heading, buttonLabel, buttonHref, heroI
             ref={(el) => {
               tileRefs.current[i] = el;
             }}
-            className={`absolute left-0 h-1/2 w-full overflow-hidden will-change-transform lg:top-0 lg:h-screen lg:w-1/2 ${
+            className={`absolute left-0 h-1/2 w-full overflow-hidden will-change-transform lg:top-0 lg:h-svh lg:w-1/2 ${
               i % 2 === 0 ? "top-0" : "top-1/2 lg:left-1/2"
             }`}
-            style={{ transform: "translate3d(0, 100vh, 0)", zIndex: 10 + i }}
+            style={{ transform: "translate3d(0, 100svh, 0)", zIndex: 10 + i }}
           >
             <Image src={img.src} alt={img.alt} fill loading="eager" sizes="(min-width: 1024px) 50vw, 100vw" className="object-cover" style={{ objectPosition: img.pos }} />
             <div className="absolute inset-0 bg-black/60" />
@@ -74,15 +74,21 @@ export default function SportImageGrid({ heading, buttonLabel, buttonHref, heroI
         ))}
 
         <div className="pointer-events-none absolute inset-0 z-40 flex flex-col items-center justify-center gap-8 px-6 text-center text-white">
-          <h2 className="heading-xl grid w-full grid-cols-2 gap-x-[0.15em] xl:leading-[152px]" style={{ fontSize: "min(13vw, 180px)" }}>
-            <span className="pr-[0.15em] text-right">{heading[0]}</span>
-            <span className="text-left">{heading[1]}</span>
+          {/* На мобилно е центрирано като цяло; на десктоп думите се срещат в средата между двете колони снимки */}
+          <h2 className="heading-xl flex w-full justify-center gap-x-[0.25em] lg:grid lg:grid-cols-2 lg:gap-x-[0.15em] xl:leading-[152px]" style={{ fontSize: "min(15vw, 180px)" }}>
+            <span className="lg:pr-[0.15em] lg:text-right">{heading[0]}</span>
+            <span className="lg:text-left">{heading[1]}</span>
           </h2>
-          <a href={buttonHref} className="btn pointer-events-auto mt-4 xl:mt-10">
+          <a
+            href={buttonHref}
+            className="group pointer-events-auto mt-2 inline-flex items-center gap-4 bg-evergreen py-1.5 pl-6 pr-1.5 text-sm font-semibold uppercase tracking-wider text-midnight shadow-lg shadow-black/20 transition-colors duration-300 hover:bg-white xl:mt-10"
+          >
             {buttonLabel}
-            <svg width="11" height="10" viewBox="0 0 11 10" fill="none" aria-hidden>
-              <path stroke="currentColor" d="M0 5h9.5M6 1l4 4-4 4" />
-            </svg>
+            <span className="flex h-10 w-10 items-center justify-center bg-midnight text-evergreen transition-transform duration-300 group-hover:translate-x-1">
+              <svg width="14" height="12" viewBox="0 0 11 10" fill="none" aria-hidden>
+                <path stroke="currentColor" strokeWidth="1.5" d="M0 5h9.5M6 1l4 4-4 4" />
+              </svg>
+            </span>
           </a>
         </div>
       </div>
