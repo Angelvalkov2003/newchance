@@ -4,17 +4,12 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 import { COMPANY, EMAIL, PHONES, SERVICES } from "../data/site";
 
-const leftMenu = [
+const mainMenu = [
   ["Начало", "/"],
   ["Услуги", "/services"],
-];
-
-const rightMenu = [
   ["Проекти", "/projects"],
   ["Недвижими имоти", "/services/nedvizhimi-imoti"],
 ];
-
-const mainMenu = [...leftMenu, ...rightMenu];
 
 const linkClass = "text-sm font-semibold uppercase tracking-wide hover:text-sis-purple";
 
@@ -55,20 +50,14 @@ export default function Header() {
       </div>
 
       <div className={`transition-colors ${scrolled || open ? "bg-white shadow-sm" : "bg-white/95"}`}>
-        {/* Логото е в центъра, менюто е разделено ляво/дясно */}
-        <div className="mx-auto grid max-w-[1600px] grid-cols-[1fr_auto_1fr] items-center gap-6 px-6 py-4 xl:px-15">
-          <nav className="hidden items-center gap-10 xl:flex">
-            {leftMenu.map(([label, href]) => (
-              <Link key={href} href={href} className={linkClass}>{label}</Link>
-            ))}
-          </nav>
-
-          <Link href="/" onClick={() => setOpen(false)} className="col-start-2 font-display text-2xl font-bold uppercase tracking-tight text-sis-purple">
+        {/* Логото е вляво, всички страници са вдясно */}
+        <div className="mx-auto flex max-w-[1600px] items-center justify-between gap-6 px-6 py-4 xl:px-15">
+          <Link href="/" onClick={() => setOpen(false)} className="font-display text-2xl font-bold uppercase tracking-tight text-sis-purple">
             {COMPANY}
           </Link>
 
-          <nav className="hidden items-center justify-end gap-10 xl:flex">
-            {rightMenu.map(([label, href]) => (
+          <nav className="hidden items-center gap-10 xl:flex">
+            {mainMenu.map(([label, href]) => (
               <Link key={href} href={href} className={linkClass}>{label}</Link>
             ))}
             <Link href="/contact" className="btn">Контакти</Link>
@@ -79,7 +68,7 @@ export default function Header() {
             aria-label={open ? "Затвори менюто" : "Отвори менюто"}
             aria-expanded={open}
             onClick={() => setOpen(!open)}
-            className={`col-start-3 flex h-11 w-11 items-center justify-center justify-self-end transition-colors duration-300 xl:hidden ${
+            className={`flex h-11 w-11 items-center justify-center transition-colors duration-300 xl:hidden ${
               open ? "bg-sis-purple" : "bg-evergreen"
             }`}
           >

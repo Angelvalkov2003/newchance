@@ -4,7 +4,7 @@ import Image from "next/image";
 import { useEffect, useRef } from "react";
 
 type Props = {
-  heading: [left: string, right: string]; // двете думи се срещат в центъра на екрана
+  heading: [first: string, second: string];
   buttonLabel: string;
   buttonHref: string;
   heroImg: { src: string; pos?: string };
@@ -74,10 +74,9 @@ export default function SportImageGrid({ heading, buttonLabel, buttonHref, heroI
         ))}
 
         <div className="pointer-events-none absolute inset-0 z-40 flex flex-col items-center justify-center gap-8 px-6 text-center text-white">
-          {/* На мобилно е центрирано като цяло; на десктоп думите се срещат в средата между двете колони снимки */}
-          <h2 className="heading-xl flex w-full justify-center gap-x-[0.25em] lg:grid lg:grid-cols-2 lg:gap-x-[0.15em] xl:leading-[152px]" style={{ fontSize: "min(15vw, 180px)" }}>
-            <span className="lg:pr-[0.15em] lg:text-right">{heading[0]}</span>
-            <span className="lg:text-left">{heading[1]}</span>
+          <h2 className="heading-xl flex w-full justify-center gap-x-[0.25em] xl:leading-[152px]" style={{ fontSize: "min(15vw, 180px)" }}>
+            <span>{heading[0]}</span>
+            <span>{heading[1]}</span>
           </h2>
           <a
             href={buttonHref}
