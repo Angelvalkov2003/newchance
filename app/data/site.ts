@@ -22,10 +22,10 @@ export const CONTACT_CTA = {
 };
 
 // Снимките са в /public. pos = object-position, за да се вижда важната част при изрязване (телефон/компютър)
-export type Img = { src: string; pos?: string };
+export type Img = { src: string; pos?: string; mobilePos?: string };
 
 export const HOME_IMAGES = {
-  hero: { src: "/Picture_1.png" },
+  hero: { src: "/Picture_1.png", mobilePos: "92% 50%" }, // на телефон се вижда дясната част – строежите
   tiles: [
     { src: "/snimka1_home_page.jpg", alt: "Тенис корт с клей настилка" },
     { src: "/snimka_2_home_page.jpg", alt: "Игрище за пикълбол", pos: "30% 50%" },

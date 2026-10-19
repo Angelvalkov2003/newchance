@@ -7,7 +7,7 @@ type Props = {
   heading: [first: string, second: string];
   buttonLabel: string;
   buttonHref: string;
-  heroImg: { src: string; pos?: string };
+  heroImg: { src: string; pos?: string; mobilePos?: string };
   images: { src: string; alt: string; pos?: string }[];
 };
 
@@ -54,7 +54,15 @@ export default function SportImageGrid({ heading, buttonLabel, buttonHref, heroI
   return (
     <section ref={sectionRef} className="relative" style={{ height: `${(images.length + 1) * 100}svh` }}>
       <div className="sticky top-0 h-svh overflow-hidden">
-        <Image src={heroImg.src} alt="" fill preload sizes="100vw" className="object-cover" style={{ objectPosition: heroImg.pos }} />
+        <Image
+          src={heroImg.src}
+          alt=""
+          fill
+          preload
+          sizes="100vw"
+          className="object-cover object-(--pos-m) lg:object-(--pos)"
+          style={{ "--pos": heroImg.pos ?? "center", "--pos-m": heroImg.mobilePos ?? heroImg.pos ?? "center" } as React.CSSProperties}
+        />
         <div className="absolute inset-0 bg-black/40" />
 
         {images.map((img, i) => (
