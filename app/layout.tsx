@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Inter, Oswald } from "next/font/google";
 import "./globals.css";
+import { SITE_URL } from "./data/site";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -15,8 +16,11 @@ const display = Oswald({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL(SITE_URL),
   title: "New Chance",
   description: "Спортни терени, строителство, ремонти и сделки с недвижими имоти",
+  alternates: { canonical: "./" },
+  openGraph: { type: "website", locale: "bg_BG", siteName: "New Chance", url: "./" },
 };
 
 export default function RootLayout({

@@ -1,5 +1,8 @@
 export const COMPANY = "New Chance";
 
+// Основният адрес на сайта – ползва се за sitemap, robots и canonical линкове
+export const SITE_URL = "https://www.newchance96.com";
+
 export const EMAIL = "info@newchance.group";
 
 export const PHONES = [
