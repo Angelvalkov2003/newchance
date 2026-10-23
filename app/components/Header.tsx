@@ -49,7 +49,7 @@ export default function Header() {
         </div>
       </div>
 
-      <div className={`transition-colors ${scrolled || open ? "bg-white shadow-sm" : "bg-white/95"}`}>
+      <div className={`relative z-[60] transition-colors ${scrolled || open ? "bg-white shadow-sm" : "bg-white/95"}`}>
         {/* Логото е вляво, всички страници са вдясно */}
         <div className="mx-auto flex max-w-[1600px] items-center justify-between gap-6 px-6 py-4 xl:px-15">
           <Link href="/" onClick={() => setOpen(false)} className="font-display text-2xl font-bold uppercase tracking-tight text-sis-purple">
@@ -81,19 +81,21 @@ export default function Header() {
         </div>
       </div>
 
-      {/* Мобилно меню: панел, който се плъзга отдясно */}
+      {/* Мобилно меню: панел, който се плъзга отдясно.
+          Позитивен z-index (не -z-10) – на Android Chrome отрицателният z в fixed header
+          често крие менюто зад съдържанието или блокира тъча. */}
       <div
         onClick={close}
         aria-hidden
-        className={`fixed inset-0 -z-10 bg-midnight/60 backdrop-blur-sm transition-opacity duration-500 xl:hidden ${
+        className={`fixed inset-0 z-40 bg-midnight/60 transition-opacity duration-500 xl:hidden ${
           open ? "opacity-100" : "pointer-events-none opacity-0"
         }`}
       />
       <aside
         aria-hidden={!open}
         inert={!open}
-        className={`mobile-drawer fixed bottom-0 right-0 top-[76px] -z-10 flex w-full max-w-md flex-col overflow-y-auto bg-sis-purple text-white shadow-2xl xl:hidden ${
-          open ? "is-open translate-x-0" : "translate-x-full"
+        className={`mobile-drawer fixed bottom-0 right-0 top-[76px] z-50 flex w-full max-w-md flex-col overflow-y-auto bg-sis-purple text-white shadow-2xl xl:hidden ${
+          open ? "is-open translate-x-0" : "pointer-events-none translate-x-full"
         }`}
       >
         <div className="pointer-events-none absolute -right-24 -top-24 h-64 w-64 rounded-full bg-evergreen/15 blur-3xl" />
