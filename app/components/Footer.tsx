@@ -38,8 +38,9 @@ export default function Footer() {
               </ul>
             </div>
           </div>
-          <p className="mt-16 border-t border-white/15 pt-8 text-xs text-white/50">
-            © {new Date().getFullYear()} {COMPANY}
+          <p className="mt-16 flex items-center gap-2 border-t border-white/15 pt-8 text-xs text-white/50">
+            <span>© {new Date().getFullYear()} {COMPANY}</span>
+            <span className="font-medium uppercase tracking-[0.2em] text-evergreen/70">new</span>
           </p>
         </div>
       </footer>
