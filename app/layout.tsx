@@ -6,13 +6,15 @@ import { SITE_URL } from "./data/site";
 const inter = Inter({
   variable: "--font-inter",
   subsets: ["latin", "cyrillic"],
+  display: "swap",
 });
 
-// Condensed display font, stand-in for the licensed Typekit font on the current site
+// Oswald няма надежден кириличен набор – само latin (мотото е "New Chance")
 const display = Oswald({
   variable: "--font-display",
-  subsets: ["latin", "cyrillic"],
+  subsets: ["latin"],
   weight: ["500", "600", "700"],
+  display: "swap",
 });
 
 export const metadata: Metadata = {
