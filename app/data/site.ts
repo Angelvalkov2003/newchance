@@ -28,15 +28,15 @@ export const CONTACT_CTA = {
 export type Img = { src: string; pos?: string; mobilePos?: string };
 
 export const HOME_IMAGES = {
-  hero: { src: "/Picture_1.png", mobilePos: "92% 50%" }, // на телефон се вижда дясната част – строежите
+  hero: { src: "/Picture_1.jpg", mobilePos: "92% 50%" }, // на телефон се вижда дясната част – строежите
   tiles: [
     { src: "/snimka1_home_page.jpg", alt: "Тенис корт с клей настилка" },
     { src: "/snimka_2_home_page.jpg", alt: "Игрище за пикълбол", pos: "30% 50%" },
-    { src: "/Picture_5.png", alt: "Футболен стадион" },
-    { src: "/Picture_2.png", alt: "Баскетболна площадка" },
-    { src: "/Picture_3.png", alt: "Тенис кортове", pos: "50% 70%" },
+    { src: "/Picture_5.jpg", alt: "Футболен стадион" },
+    { src: "/Picture_2.jpg", alt: "Баскетболна площадка" },
+    { src: "/Picture_3.jpg", alt: "Тенис кортове", pos: "50% 70%" },
   ],
-  about: { src: "/Picture_1.png" },
+  about: { src: "/Picture_1.jpg" },
 };
 
 export type Service = {
@@ -56,7 +56,7 @@ export const SERVICES: Service[] = [
     short: "Футболни игрища, писти, кортове и мултифункционални площадки.",
     intro:
       "Изграждане и обновяване на спортни терени за училища, спортни клубове, обществени пространства, жилищни комплекси и частни имоти.",
-    img: { src: "/Picture_5.png" },
+    img: { src: "/Picture_5.jpg" },
     groups: [
       {
         title: "Видове обекти",
@@ -208,7 +208,7 @@ export const SERVICES: Service[] = [
     short: "Вътрешни и външни настилки, асфалтиране на пътища и паркинги.",
     intro:
       "Доставка, полагане, монтаж, демонтаж и подмяна на различни видове настилки за вътрешни и външни пространства.",
-    img: { src: "/Picture_4.png", pos: "60% 50%" },
+    img: { src: "/Picture_4.jpg", pos: "60% 50%" },
     groups: [
       {
         title: "Видове настилки",
@@ -245,7 +245,7 @@ export const SERVICES: Service[] = [
     short: "Алеи, площадки, огради, отводняване и дворно осветление.",
     intro:
       "Изграждане и благоустрояване на частни дворове, междублокови пространства и прилежащи площи към жилищни, търговски и обществени обекти.",
-    img: { src: "/Picture_2.png" },
+    img: { src: "/Picture_2.jpg" },
     groups: [
       {
         items: [
@@ -311,7 +311,7 @@ export const SERVICES: Service[] = [
     short: "Покупко-продажба и отдаване под наем на имоти.",
     intro:
       "Дейност в областта на покупко-продажбата и отдаването под наем на недвижими имоти за жилищни и бизнес нужди.",
-    img: { src: "/Picture_3.png", pos: "50% 40%" },
+    img: { src: "/Picture_3.jpg", pos: "50% 40%" },
     groups: [],
     note: "За актуални предложения и условия се свържете с нас.",
   },

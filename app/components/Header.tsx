@@ -20,10 +20,20 @@ export default function Header() {
   const close = () => setOpen(false);
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 40);
+    let frame = 0;
+    const onScroll = () => {
+      if (frame) return;
+      frame = requestAnimationFrame(() => {
+        frame = 0;
+        setScrolled(window.scrollY > 40);
+      });
+    };
     onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
+    return () => {
+      cancelAnimationFrame(frame);
+      window.removeEventListener("scroll", onScroll);
+    };
   }, []);
 
   // Заключва скрола на страницата и затваря с Esc, докато менюто е отворено
@@ -98,8 +108,6 @@ export default function Header() {
           open ? "is-open translate-x-0" : "pointer-events-none translate-x-full"
         }`}
       >
-        <div className="pointer-events-none absolute -right-24 -top-24 h-64 w-64 rounded-full bg-evergreen/15 blur-3xl" />
-
         <nav className="relative px-6 pt-8">
           <p className="drawer-item mb-4 text-[11px] font-semibold uppercase tracking-[0.25em] text-white/50">Меню</p>
           <ul className="border-t border-white/10">
