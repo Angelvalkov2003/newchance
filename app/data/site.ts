@@ -30,7 +30,7 @@ export type Img = { src: string; pos?: string; mobilePos?: string };
 export const HOME_IMAGES = {
   hero: { src: "/Picture_1.jpg", mobilePos: "92% 50%" }, // на телефон се вижда дясната част – строежите
   tiles: [
-    { src: "/snimka1_home_page.jpg", alt: "Тенис корт с клей настилка" },
+    { src: "/snimka1_home_page.webp", alt: "Тенис корт с клей настилка" },
     { src: "/snimka_2_home_page.jpg", alt: "Игрище за пикълбол", pos: "30% 50%" },
     { src: "/Picture_5.jpg", alt: "Футболен стадион" },
     { src: "/Picture_2.jpg", alt: "Баскетболна площадка" },
@@ -123,7 +123,7 @@ export const SERVICES: Service[] = [
     title: "Жилищно и нежилищно строителство",
     short: "Къщи, жилищни, офисни, търговски и обслужващи сгради.",
     intro: "Изграждане, реконструкция и обновяване на сгради и прилежаща инфраструктура.",
-    img: { src: "/scott-blake-ZOiGMIcfXXg-unsplash.jpg", pos: "40% 35%" },
+    img: { src: "/scott-blake-ZOiGMIcfXXg-unsplash.webp", pos: "40% 35%" },
     groups: [
       {
         items: [
@@ -145,7 +145,7 @@ export const SERVICES: Service[] = [
     title: "Ремонти и довършване",
     short: "Цялостни и частични ремонти на жилища, офиси и търговски обекти.",
     intro: "Цялостни и частични ремонти на жилища, офиси, търговски и обслужващи помещения.",
-    img: { src: "/remonti.png" },
+    img: { src: "/remonti.webp" },
     groups: [
       {
         items: [
@@ -168,7 +168,7 @@ export const SERVICES: Service[] = [
     title: "Хидро-, топло- и шумоизолации",
     short: "Изпълнение, ремонт и подмяна на изолационни системи.",
     intro: "Изпълнение, ремонт и подмяна на изолационни системи.",
-    img: { src: "/hidroizolaciya.png" },
+    img: { src: "/hidroizolaciya.webp" },
     groups: [
       {
         title: "Хидроизолации",
@@ -269,7 +269,7 @@ export const SERVICES: Service[] = [
     title: "Подготвителни, земни и демонтажни работи",
     short: "Изкопи, насипи, демонтаж и извозване на отпадъци.",
     intro: "Подготовка на обекти за строителство, ремонт и благоустрояване.",
-    img: { src: "/elvir-k-Xtyh5b5GGX4-unsplash.jpg", pos: "50% 75%" },
+    img: { src: "/elvir-k-Xtyh5b5GGX4-unsplash.webp", pos: "50% 75%" },
     groups: [
       {
         items: [
@@ -290,7 +290,7 @@ export const SERVICES: Service[] = [
     title: "Доставка и транспорт на материали",
     short: "Доставки, товаро-разтоварни дейности и пренасяне на обекта.",
     intro: "Организиране на доставките и пренасянето на материали за изпълнението на обекта.",
-    img: { src: "/sergej-DZMjNZcDR4g-unsplash.jpg", pos: "50% 40%" },
+    img: { src: "/sergej-DZMjNZcDR4g-unsplash.webp", pos: "50% 40%" },
     groups: [
       {
         items: [
